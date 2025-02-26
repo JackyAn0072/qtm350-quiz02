@@ -1,0 +1,13 @@
+---
+title: "Gapminder Data Analysis"
+format: html
+---
+
+# Welcome to Gapminder Analysis
+
+The Gapminder dataset provides historical data on life expectancy, GDP per capita, and population across various countries from 1952 to 2007.
+
+## Explore the Data:
+- [Life Expectancy and GDP per Capita](life-gdp.qmd)
+- [Life Expectancy and Population](life-population.qmd)
+- [Country Analysis](country.qmd)

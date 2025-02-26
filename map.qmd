@@ -1,0 +1,42 @@
+---
+title: "Interactive Map"
+format: 
+  html:
+    self-contained: false  # Needed for Plotly
+execute:
+  echo: false
+  warning: false
+  output: true
+---
+
+# World Map of GDP per Capita
+
+This map visualizes GDP per capita across different countries in 2007.
+
+```{python}
+import pandas as pd
+import plotly.express as px
+
+# Load dataset
+gapminder = pd.read_csv("gapminder.csv")
+
+# Ensure the year column is numeric
+gapminder["year"] = pd.to_numeric(gapminder["year"])
+
+# Filter for the latest year (2007)
+latest_data = gapminder[gapminder["year"] == 2007]
+
+# Create choropleth map
+fig = px.choropleth(latest_data, 
+                    locations="country", 
+                    locationmode="country names",
+                    color="gdp_per_capita",
+                    hover_name="country",
+                    color_continuous_scale="Viridis",
+                    title="GDP per Capita in 2007")
+
+# Ensure the plot is properly displayed
+import plotly.io as pio
+pio.renderers.default = "notebook_connected"  # Ensures correct rendering in Jupyter
+fig.show()
+```

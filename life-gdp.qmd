@@ -1,0 +1,35 @@
+---
+title: "Life Expectancy and GDP per Capita"
+format: html
+execute:
+  echo: true   # Show the code
+  warning: false
+  output: true  # Ensure output is shown
+---
+
+# Life Expectancy vs. GDP per Capita
+
+This analysis explores how GDP per capita is related to life expectancy over time.
+
+```{python}
+#| label: setup analysis
+#| echo: true  # Set to true to check if code executes
+#| results: show  # Ensure the output is visible
+
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Load dataset
+gapminder = pd.read_csv("gapminder.csv")
+
+# Create a scatter plot with a trend line
+plt.figure(figsize=(10,6))
+sns.scatterplot(data=gapminder, x="gdp_per_capita", y="life_expectancy", hue="continent", alpha=0.7)
+plt.xscale("log")
+plt.xlabel("GDP per Capita (Log Scale)")
+plt.ylabel("Life Expectancy")
+plt.title("Life Expectancy vs. GDP per Capita")
+plt.grid(True)
+plt.show()
+```
